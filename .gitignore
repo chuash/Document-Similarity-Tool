@@ -1,0 +1,23 @@
+# reference : https://github.com/github/gitignore/blob/main/Python.gitignore
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Others
+*.csv
+*.png
+*.env
+*.log
+*.docx
+*.pdf
+*.db
+
+# Virtual environments
+venv/
+.venv
+
+secrets.toml
