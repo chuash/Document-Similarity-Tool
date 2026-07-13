@@ -2,12 +2,16 @@
 import sqlite3
 from pathlib import Path
 
-DB_PATH = Path("sqlite/documentsDB.db")
+DB_PATH = Path("sqlite") / "documentsDB.db"
+# Create the sqlite directory if it doesn't exist
+DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 
 def create_database():
     # Set up DB connection
     conn = sqlite3.connect(DB_PATH)
+    # Ensures that foreign key relationships are actually enforced
+    conn.execute("PRAGMA foreign_keys = ON")
     cursor = conn.cursor()
 
     # create Documents table if absent
