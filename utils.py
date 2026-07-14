@@ -1,9 +1,7 @@
 import hmac, logging, os, time
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
-from google import genai
-#from pydantic import BaseModel
-from typing import Dict, List, Literal
+
 
 # Load environment variables
 if not load_dotenv(".env"):

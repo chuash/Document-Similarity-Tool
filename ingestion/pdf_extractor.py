@@ -78,8 +78,8 @@ class PDFExtractor:
                 pages.append({
                     "doc_id": document["doc_id"],
                     "page_number": page_number,
-                    "start_offset": start_offset,
-                    "end_offset": end_offset,
+                    "page_start_offset": start_offset,
+                    "page_end_offset": end_offset,
                     "page_text": text
                 })
             
@@ -119,10 +119,5 @@ class PDFExtractor:
         return pages, images 
 
 
-# next work on insert into DB, then seperate .py for chunking
-https://chatgpt.com/c/6a4fbfb0-2874-83ec-975c-206a5fa91db0
-
-
-
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+     pass
