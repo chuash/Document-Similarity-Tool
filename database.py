@@ -107,7 +107,7 @@ def create_database(conn:sqlite3.Connection):
     logger.info(f"Database successfully created or already in existence")
 
 
-def insert_documents(conn, documents:List[Dict]):
+def insert_documents(conn:sqlite3.Connection, documents:List[Dict]):
     """
     Adding the discovered documents into the database
     """
@@ -135,7 +135,7 @@ def insert_documents(conn, documents:List[Dict]):
         raise MyError(f"Error inserting documents into database: {e}")
 
 
-def insert_pages(conn, pages:List[Dict]):
+def insert_pages(conn:sqlite3.Connection, pages:List[Dict]):
     """
     Adding the extracted page text and metadata into the database
     """
@@ -163,7 +163,7 @@ def insert_pages(conn, pages:List[Dict]):
         raise MyError(f"Error inserting page information into database: {e}")
 
 
-def insert_chunks(conn, chunks:List[Dict]):
+def insert_chunks(conn:sqlite3.Connection, chunks:List[Dict]):
     """
     Adding the text chunks into the database
     """
@@ -195,7 +195,7 @@ def insert_chunks(conn, chunks:List[Dict]):
         raise MyError(f"Error inserting text chunks into database: {e}")
 
 
-def insert_images(conn, images:List[Dict]):
+def insert_images(conn:sqlite3.Connection, images:List[Dict]):
     """
     Adding the extracted images into the database
     """

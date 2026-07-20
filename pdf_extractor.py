@@ -1,10 +1,15 @@
 import fitz, io, uuid, imagehash
 from pathlib import Path
 from PIL import Image
+from typing import Dict, List
+from utils import MyError, setup_shared_logger
+
+# Set up the shared logger
+logger = setup_shared_logger()
 
 class PDFExtractor:
 
-    def __init__(self, root_folder: str, image_output_folder: str):
+    def __init__(self, *, root_folder: str, image_output_folder: str):
 
         # Declare the folder containing the tender documents
         self.root_folder = Path(root_folder)
@@ -40,13 +45,15 @@ class PDFExtractor:
                     "vendor_name": folder.name.lower() if "tender_spec" not in folder.name.lower() else "tender_spec"
                 })
         
+        logger.info(f"Document discovery successfully completed in {self.root_folder}, {len(documents)} PDF documents discovered.")
+
         return documents
 
     ####################################################################
     # Extract text and image from PDF
     ####################################################################
 
-    def extract_pdf(self, document):
+    def extract_pdf(self, document:Dict):
         """
         Extract text and images from a PDF.
 
@@ -115,6 +122,8 @@ class PDFExtractor:
                         })
         
         pdf.close()
+
+        logger.info(f"Text and image extraction from {document['doc_name']} completed.")
 
         return pages, images 
 
